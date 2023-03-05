@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Qui_Quadrado
@@ -18,6 +13,7 @@ namespace Qui_Quadrado
         }
         /* 
          * A função QuiQuadrado() vai retornar o valor do QuiQuadrado de duas listas
+         * Vai usar todos os valores das listas até detetar 0 em Ej
          */
         public float QuiQuadrado(float[] Oj, float[] Ej)
         {
@@ -71,19 +67,27 @@ namespace Qui_Quadrado
             return ((Oj - Ej) * (Oj - Ej)) / Ej;
         }
 
-
+        /* 
+         * Vai converter uma string para um float(single).
+         * Vai apagar os espaços em branco e tentar converter qualquer outro 
+         * caracter
+         */
         public float FloatSafeConversion(string a)
         {
+            a = String.Concat(a.Where(c => !Char.IsWhiteSpace(c)));
             if (a.Length == 0)
             {
                 return 0;
             }
             else
             {
-                return Convert.ToSingle(String.Concat(a.Where(c => !Char.IsWhiteSpace(c))));
+                return Convert.ToSingle(a);
             }
         }
 
+        /*
+         * Butão Qui
+         */
         private void button1_Click(object sender, EventArgs e)
         {
             ErrorText.Visible = false;
@@ -185,6 +189,9 @@ namespace Qui_Quadrado
             }
         }
 
+        /*
+         * butão Limpar
+         */
         private void button2_Click(object sender, EventArgs e)
         {
 
